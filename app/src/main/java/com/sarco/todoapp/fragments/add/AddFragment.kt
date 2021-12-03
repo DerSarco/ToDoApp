@@ -12,6 +12,7 @@ import com.sarco.todoapp.data.models.Priority
 import com.sarco.todoapp.data.models.ToDoData
 import com.sarco.todoapp.data.viewModel.ToDoViewModel
 import com.sarco.todoapp.databinding.FragmentAddBinding
+import com.sarco.todoapp.fragments.SharedViewModel
 import kotlinx.coroutines.processNextEventInCurrentThread
 
 class AddFragment : Fragment() {
@@ -19,6 +20,8 @@ class AddFragment : Fragment() {
     private lateinit var mBinding: FragmentAddBinding
 
     private val mTodoViewModel: ToDoViewModel by viewModels()
+    private val mSharedViewModel: SharedViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +30,7 @@ class AddFragment : Fragment() {
         // Inflate the layout for this fragment
         mBinding = FragmentAddBinding.inflate(inflater, container, false)
 
+        mBinding.prioritySpinner.onItemSelectedListener = mSharedViewModel.listener
 
         setHasOptionsMenu(true)
         return mBinding.root
@@ -50,14 +54,14 @@ class AddFragment : Fragment() {
         val mPriority = mBinding.prioritySpinner.selectedItem.toString()
         val mDescription = mBinding.etDescription.text.toString()
 
-        val validation = verifyDataFromUser(mTitle, mDescription)
+        val validation = mSharedViewModel.verifyDataFromUser(mTitle, mDescription)
 
         if(validation){
             //INsert data to data db
             val newData = ToDoData(
                 0,
                 mTitle,
-                parsePriority(mPriority),
+                mSharedViewModel.parsePriority(mPriority),
                 mDescription
             )
             mTodoViewModel.insertData(newData)
@@ -67,18 +71,4 @@ class AddFragment : Fragment() {
 
     }
 
-    private fun verifyDataFromUser(title:String, description: String): Boolean{
-        return if(TextUtils.isEmpty(title) || TextUtils.isEmpty(description)) {
-            false
-        } else !(title.isEmpty() || description.isEmpty())
-    }
-
-    private fun parsePriority(priority: String): Priority{
-        return when(priority){
-            "High Priority" -> Priority.HIGH
-            "Medium Priority" -> Priority.MEDIUM
-            "Low Priority" -> Priority.LOW
-            else ->  Priority.HIGH
-        }
-    }
 }

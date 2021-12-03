@@ -3,6 +3,9 @@
     <color name="colorPrimary">#6200EA</color>
     <color name="colorPrimaryDark">#5502C8</color>
     <color name="colorAccent">#9d46ff</color>
+    <color name="red">#FF5733</color>
+    <color name="yellow">#A5FF33</color>
+    <color name="green">#50FF45</color>
 
 
     <color name="purple_200">#FFBB86FC</color>
