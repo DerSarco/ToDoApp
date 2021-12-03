@@ -1,6 +1,7 @@
 package com.sarco.todoapp.data
 
 import androidx.room.TypeConverter
+import com.sarco.todoapp.data.models.Priority
 
 class Converter {
 
