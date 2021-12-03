@@ -2,7 +2,6 @@ package com.sarco.todoapp.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.sarco.todoapp.data.models.Priority
 
 
 @Entity(tableName = "todo_table")
