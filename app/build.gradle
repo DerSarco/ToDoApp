@@ -41,6 +41,9 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
+//    LIfecycle scope coroutines
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
