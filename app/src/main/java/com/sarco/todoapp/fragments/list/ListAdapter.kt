@@ -20,8 +20,8 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         mContext = parent.context
-        val view = LayoutInflater.from(mContext)
-        val binding = RowLayoutBinding.inflate(view, parent, false)
+        val binding = RowLayoutBinding.inflate(LayoutInflater.from(mContext),
+            parent, false)
 
         return ViewHolder(binding)
     }
