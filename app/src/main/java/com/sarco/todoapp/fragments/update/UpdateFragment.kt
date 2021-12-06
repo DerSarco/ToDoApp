@@ -23,15 +23,16 @@ class UpdateFragment : Fragment() {
 
     private val args by navArgs<UpdateFragmentArgs>()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         mBinding = FragmentUpdateBinding.inflate(inflater, container, false)
 
-        mBinding.etTitleUpdate.setText(args.currentItem.title)
-        mBinding.etDescriptionUpdate.setText(args.currentItem.description)
-        mBinding.prioritySpinnerUpdate.setSelection(mSharedViewModel.parsePriorityToInt(args.currentItem.priority))
+//        this will work anyway
+        mBinding.args = args
+
         mBinding.prioritySpinnerUpdate.onItemSelectedListener = mSharedViewModel.listener
 
         setHasOptionsMenu(true)

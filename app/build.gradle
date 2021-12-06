@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.sarco.todoapp"
-        minSdk 21
+        minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -71,4 +71,7 @@ dependencies {
     // Kotlin components
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
+
+//    RecyclerView Animators
+    implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
 }
